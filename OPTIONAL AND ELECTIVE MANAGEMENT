@@ -1,0 +1,89 @@
+class Course:
+    def __init__(self, name, code, credit_hours):
+        self.name = name
+        self.code = code
+        self.credit_hours = credit_hours
+
+    def get_name(self):
+        return self.name
+
+    def get_code(self):
+        return self.code
+
+    def get_credit_hours(self):
+        return self.credit_hours
+
+
+class OptionalCourse(Course):
+    def __init__(self, name, code, credit_hours, required_courses):
+        super().__init__(name, code, credit_hours)
+        self.required_courses = required_courses
+
+    def get_required_courses(self):
+        return self.required_courses
+
+
+class ElectiveCourse(Course):
+    def __init__(self, name, code, credit_hours, restrictions):
+        super().__init__(name, code, credit_hours)
+        self.restrictions = restrictions
+
+    def get_restrictions(self):
+        return self.restrictions
+
+
+class Student:
+    def __init__(self, name, id, courses_taken):
+        self.name = name
+        self.id = id
+        self.courses_taken = courses_taken
+
+    def get_name(self):
+        return self.name
+
+    def get_id(self):
+        return self.id
+
+    def get_courses_taken(self):
+        return self.courses_taken
+
+
+class Optionals:
+    def __init__(self, all_courses, required_courses):
+        self.all_courses = all_courses
+        self.required_courses = required_courses
+        self.selected_courses = []
+
+    def get_all_courses(self):
+        return self.all_courses
+
+    def get_required_courses(self):
+        return self.required_courses
+
+    def add_course(self, course):
+        if course in self.all_courses and course not in self.selected_courses:
+            self.selected_courses.append(course)
+
+    def remove_course(self, course):
+        if course in self.selected_courses:
+            self.selected_courses.remove(course)
+
+
+class Electives:
+    def __init__(self, all_courses, restrictions):
+        self.all_courses = all_courses
+        self.restrictions = restrictions
+        self.selected_courses = []
+
+    def get_all_courses(self):
+        return self.all_courses
+
+    def get_restrictions(self):
+        return self.restrictions
+
+    def add_course(self, course):
+        if course in self.all_courses and course not in self.selected_courses:
+            self.selected_courses.append(course)
+
+    def remove_course(self, course):
+        if
